@@ -8,4 +8,4 @@ def get_zones(db: Session):
 
 
 def get_zones_by_state(db: Session, state: str):
-    return db.query(models.Zone).filter(models.Zone.state == state)
+    return db.query(models.Zone).filter(models.Zone.state == state).all()
