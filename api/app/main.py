@@ -6,6 +6,7 @@ from starlette.middleware.cors import CORSMiddleware
 from app.v1.api import api_router
 from app.core.settings import settings
 from app.core.database import Base, engine
+from app.v1.tags import tags_metadata
 
 
 @lru_cache()
@@ -17,6 +18,9 @@ def get_settings():
 app = FastAPI(
     title=get_settings().PROJECT_NAME,
     openapi_url=f"{ get_settings().API_V1_STR }/openapi.json",
+    version=get_settings().VERSION,
+    description=get_settings().DESCRIPTION,
+    openapi_tags=tags_metadata,
 )
 
 # Database
