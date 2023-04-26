@@ -22,9 +22,17 @@ class Zone(ZoneBase):
 
 
 class PrayerTimeBase(BaseModel):
-    hijri_date: str
+    hijri_date: datetime.date
     date: datetime.date
     imsak: str
+    date: datetime.date
+    imsak: datetime.time
+    fajr: datetime.time
+    syuruk: datetime.time
+    dhuhr: datetime.time
+    asr: datetime.time
+    maghrib: datetime.time
+    isha: datetime.time
 
 
 class PrayerTimeCreate(PrayerTimeBase):
@@ -33,6 +41,7 @@ class PrayerTimeCreate(PrayerTimeBase):
 
 class PrayerTime(PrayerTimeBase):
     id: int
+    zone_code: str
 
     class Config:
         orm_mode = True

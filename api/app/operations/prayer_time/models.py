@@ -1,7 +1,7 @@
-# from typing import TYPE_CHECKING
 import datetime
 
 from sqlalchemy import Column, ForeignKey, Integer, String, DateTime, Date, Time
+from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.orm import relationship
 
 from app.core.database import Base
@@ -33,3 +33,7 @@ class PrayerTime(Base):
     asr = Column(Time, nullable=False)
     maghrib = Column(Time, nullable=False)
     isha = Column(Time, nullable=False)
+
+    @hybrid_property
+    def zone_code(self):
+        return self.zone.code
