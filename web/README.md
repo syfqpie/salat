@@ -1,4 +1,4 @@
-# Salat - Malaysia salah time API using Nuxt 🕌
+# Salat - Malaysia salah time SPA using Nuxt 🕌
 
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 
