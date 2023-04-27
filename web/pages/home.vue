@@ -7,8 +7,6 @@ div(class="bg-white overflow-hidden shadow sm:rounded-lg p-6")
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-	data () {
-		return {}
-	}
+	name: 'HomePage'
 })
 </script>
