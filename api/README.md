@@ -24,5 +24,5 @@ Get into the virtual environment
 Run the live server
 
 ```bash
-uvicorn app.main:app --reload
+    uvicorn app.main:app --reload
 ```
