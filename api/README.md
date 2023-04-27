@@ -7,22 +7,15 @@
 * Python 3.10+
 * pipenv
 
-## Getting started
-
-Install dependencies
+## Build setup
 
 ```bash
-pipenv install
-```
+# install dependencies
+$ pipenv install
 
-Get into the virtual environment
+# get into the virtual environment
+$ pipenv shell
 
-```bash
-pipenv shell
-```
-
-Run the live server
-
-```bash
-uvicorn app.main:app --reload
+# run the live server
+$ uvicorn app.main:app --reload
 ```
