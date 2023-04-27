@@ -12,17 +12,17 @@
 Install dependencies
 
 ```bash
-  pipenv install
+pipenv install
 ```
 
 Get into the virtual environment
 
 ```bash
-  pipenv shell
+pipenv shell
 ```
 
 Run the live server
 
 ```bash
-    uvicorn app.main:app --reload
+uvicorn app.main:app --reload
 ```
