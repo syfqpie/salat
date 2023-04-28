@@ -4,35 +4,85 @@ export const LOCALE_TDIGIT_OPTS: Intl.DateTimeFormatOptions = { hour: 'numeric',
 export const LOCALE_TIMER_ARG = 'en-US'
 export const LOCALE_TIMER_OPTS: Intl.NumberFormatOptions = { minimumIntegerDigits: 2, useGrouping: false }
 
+/**
+ * Interface for PrayerDaily component
+ * @member {string} name Prayer time name (eg: Imsak / Fajr / Syuruk / Dhuhr / Asr / Maghrib / Isha)
+ * @member {string} iconSrc Icon source (eg: icons/isha-lineal.png)
+ * @member {string} time Prayer time string (eg: --:--)
+ */
 export interface PrayerTimeItem {
-    /** Prayer time */
-    name: string,
+    /** Prayer time name */
+    name: string;
 
     /** Icon source */
-    iconSrc: string,
+    iconSrc: string;
 
-    time?: string
+    /** Prayer time string */
+    time?: string;
 }
 
+/**
+ * Interface for PrayerDailyHeader component
+ * @member {string} name Prayer time name (eg: Imsak / Fajr / Syuruk / Dhuhr / Asr / Maghrib / Isha)
+ * @member {string} date Prayer time in Date (eg: Date Sat Apr 29 2023 05:44:00 GMT+0800 (Malaysia Time))
+ * @member {string} time Prayer time string (eg: 5:44 am)
+ */
 export interface NextPrayerItem {
-    name: string,
-    date: Date,
-    time: string
+    /** Prayer time name */
+    name: string;
+
+    /** Prayer time in Date */
+    date: Date;
+
+    /** Prayer time string */
+    time: string;
 }
 
 /**
  * Base interface for prayer times
+ * @member {number} id Prayer time database ID (eg: 1)
+ * @member {string} zone_code Zone code (eg: JHR01)
+ * @member {string} hijri_date Prayer time hijri date (eg: 1444-10-03)
+ * @member {string} date Prayer time normal date (eg: 2023-04-24)
+ * @member {string} imsak Imsak time (eg: 05:35:00)
+ * @member {string} fajr Fajr time (eg: 05:45:00)
+ * @member {string} syuruk Syuruk time (eg: 06:55:00)
+ * @member {string} dhuhr Dhuhr time (eg: 13:03:00)
+ * @member {string} asr Asr time (eg: 16:18:00)
+ * @member {string} maghrib Maghrib time (eg: 19:07:00)
+ * @member {string} isha Isha time (eg: 20:18:00)
  */
 export interface PrayerTime {
-    id: number
-    zone_code: string
-    hijri_date: string
-    date: string
-    imsak: string
-    fajr: string
-    syuruk: string
-    dhuhr: string
-    asr: string
-    maghrib: string
-    isha: string
+    /** Prayer time database ID */
+    id: number;
+
+    /** Zone code */
+    zone_code: string;
+
+    /** Prayer time hijri date */
+    hijri_date: string;
+
+    /** Prayer time normal date */
+    date: string;
+
+    /** Imsak time */
+    imsak: string;
+
+    /** Fajr time */
+    fajr: string;
+
+    /** Syuruk time */
+    syuruk: string;
+
+    /** Dhuhr time */
+    dhuhr: string;
+
+    /** Asr time */
+    asr: string;
+
+    /** Maghrib time */
+    maghrib: string;
+
+    /** Isha time */
+    isha: string;
 }
