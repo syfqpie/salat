@@ -7,7 +7,7 @@ div(class="mt-auto me-auto")
 <script lang="ts">
 import { defineComponent } from 'vue'
 
-import { LOCALE_TIMER_ARG, LOCALE_TIMER_OPTS } from '@/types/prayer-times'
+import { LOCALE_TIMER_ARG, LOCALE_TIMER_OPTS } from '~/types/prayer-times'
 
 export default defineComponent({
 	name: 'PrayerTimer',
