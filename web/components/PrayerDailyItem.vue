@@ -16,7 +16,7 @@ import { PrayerTime, PrayerTimeItem, LOCALE_ARG, LOCALE_OPTS } from '~/types/pra
 export default defineComponent({
 	name: 'PrayerDailyItem',
 	props: {
-		todayPrayerTimes: {
+		todayItems: {
 			type: Object as () => PrayerTime | null,
 			default: null
 		}
@@ -63,7 +63,7 @@ export default defineComponent({
 		}
 	},
 	watch: {
-		todayPrayerTimes: {
+		todayItems: {
 			handler (val) {
 				if (val) {
 					const currentDate = new Date()

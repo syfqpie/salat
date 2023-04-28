@@ -20,7 +20,11 @@ import { NextPrayerItem, PrayerTime, LOCALE_ARG, LOCALE_TDIGIT_OPTS } from '~/ty
 export default defineComponent({
 	name: 'PrayerDailyHeader',
 	props: {
-		todayPrayerTimes: {
+		todayItems: {
+			type: Object as () => PrayerTime | null,
+			default: null
+		},
+		tomorrowItems: {
 			type: Object as () => PrayerTime | null,
 			default: null
 		}
@@ -37,27 +41,32 @@ export default defineComponent({
 				return checkerDT.getTime() > currentDT.getTime()
 			}
 
-			if (this.todayPrayerTimes) {
-				if (isNext(this.todayPrayerTimes.imsak)) {
+			if (this.todayItems) {
+				if (isNext(this.todayItems.imsak)) {
 					nextName = 'Imsak'
-				} else if (isNext(this.todayPrayerTimes.imsak)) {
+				} else if (isNext(this.todayItems.imsak)) {
 					nextName = 'Imsak'
-				} else if (isNext(this.todayPrayerTimes.fajr)) {
+				} else if (isNext(this.todayItems.fajr)) {
 					nextName = 'Fajr'
-				} else if (isNext(this.todayPrayerTimes.syuruk)) {
+				} else if (isNext(this.todayItems.syuruk)) {
 					nextName = 'Syuruk'
-				} else if (isNext(this.todayPrayerTimes.dhuhr)) {
+				} else if (isNext(this.todayItems.dhuhr)) {
 					nextName = 'Dhuhr'
-				} else if (isNext(this.todayPrayerTimes.asr)) {
+				} else if (isNext(this.todayItems.asr)) {
 					nextName = 'Asr'
-				} else if (isNext(this.todayPrayerTimes.maghrib)) {
+				} else if (isNext(this.todayItems.maghrib)) {
 					nextName = 'Maghrib'
-				} else if (isNext(this.todayPrayerTimes.isha)) {
+				} else if (isNext(this.todayItems.isha)) {
 					nextName = 'Isha'
+				} else if (this.tomorrowItems) {
+					// after isha, so we will get tomorrow imsak time
+					nextName = 'Imsak'
+					isNext(this.tomorrowItems.imsak)
+					checkerDT.setDate(checkerDT.getDate() + 1)
 				}
 			}
 
-			const nextTime: string = this.todayPrayerTimes && nextName !== '--'
+			const nextTime: string = this.todayItems && nextName !== '--'
 				? String(checkerDT.toLocaleTimeString(LOCALE_ARG, LOCALE_TDIGIT_OPTS))
 				: '--'
 
