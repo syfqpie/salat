@@ -1,5 +1,5 @@
 <template lang="pug">
-div(class="mt-auto ms-auto")
+div(class="mt-auto me-auto")
 	p(class="text-xs") To next prayer
 	p(class="text-3xl font-semibold mb-0") {{ timeLeft }}
 </template>
@@ -7,8 +7,7 @@ div(class="mt-auto ms-auto")
 <script lang="ts">
 import { defineComponent } from 'vue'
 
-const LOCAL_ARG = 'en-US'
-const LOCALE_OPTS = { minimumIntegerDigits: 2, useGrouping: false }
+import { LOCALE_TIMER_ARG, LOCALE_TIMER_OPTS } from '@/types/prayer-times'
 
 export default defineComponent({
 	name: 'PrayerTimer',
@@ -27,7 +26,7 @@ export default defineComponent({
 		hoursLeft (): string {
 			if (this.timeDistance !== null && this.timeDistance >= 0) {
 				const msToHour = (this.timeDistance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-				return Math.round(msToHour).toLocaleString(LOCAL_ARG, LOCALE_OPTS)
+				return Math.floor(msToHour).toLocaleString(LOCALE_TIMER_ARG, LOCALE_TIMER_OPTS)
 			}
 
 			return '--'
@@ -35,7 +34,7 @@ export default defineComponent({
 		minutesLeft (): string {
 			if (this.timeDistance !== null && this.timeDistance >= 0) {
 				const msToMin = (this.timeDistance % (1000 * 60 * 60)) / (1000 * 60)
-				return Math.round(msToMin).toLocaleString(LOCAL_ARG, LOCALE_OPTS)
+				return Math.floor(msToMin).toLocaleString(LOCALE_TIMER_ARG, LOCALE_TIMER_OPTS)
 			}
 
 			return '--'
@@ -43,8 +42,7 @@ export default defineComponent({
 		secondsLeft (): string {
 			if (this.timeDistance !== null && this.timeDistance >= 0) {
 				const msToSec = (this.timeDistance % (1000 * 60)) / 1000
-				return Math.round(msToSec)
-					.toLocaleString(LOCAL_ARG, LOCALE_OPTS)
+				return Math.floor(msToSec).toLocaleString(LOCALE_TIMER_ARG, LOCALE_TIMER_OPTS)
 			}
 
 			return '--'
