@@ -71,7 +71,6 @@ export default defineComponent({
 					for (const currentKey in val) {
 						const currentTimeIndex = this.prayerTime.findIndex(
 							(item) => {
-								console.log(item.name.toLowerCase(), String(currentKey))
 								return String(item.name.toLowerCase()) === String(currentKey)
 							}
 						)
