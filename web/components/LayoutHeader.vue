@@ -1,5 +1,5 @@
 <template lang="pug">
-a(class='flex justify-center pt-8 pb-4 sm:pt-0' href='https://nuxtjs.org' target='_blank')
+a(class='flex justify-center pt-8 pb-2 sm:pt-0' href='https://nuxtjs.org' target='_blank')
     h1(
         class="mb-0 text-4xl font-bold leading-none tracking-tight\
         md:text-5xl lg:text-3xl"

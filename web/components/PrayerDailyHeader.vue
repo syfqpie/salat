@@ -1,15 +1,15 @@
 <template lang="pug">
-div(class="p-3 rounded-lg mb-4")
-	div(class="grid grid-cols-6 grid-flow-col-dense")
-		div(class="col-span-1 p-1")
-			img(src="@/assets/icons/drum-lineal.png" class="h-16")
-		div(class="col-span-2 flex p-1")
-			PrayerTimer(:next-prayer="nextPrayer.date")
-		div(class="col-span-3 flex items-end p-1")
-			div(class="ms-auto")
-				p(class="text-xs") Next prayer
-				p(class="text-3xl font-semibold mb-0") {{ nextPrayer.name }}:
+div(class="p-3 rounded-lg mb-4 bg-green-300 shadow-lg")
+	div(class="grid grid-cols-12")
+		div(class="col-span-6 flex items-end p-1")
+			div(class="me-auto")
+				p(class="text-sm") Next prayer time
+				p(class="text-4xl font-semibold mb-0") {{ nextPrayer.name }}:
 					span(class="ms-2") {{ nextPrayer.time }}
+		div(class="col-span-4 flex p-1")
+			PrayerTimer(:next-prayer="nextPrayer.date")
+		div(class="col-span-2 p-1")
+			img(src="@/assets/icons/drum-lineal.png" class="h-24")
 </template>
 
 <script lang="ts">

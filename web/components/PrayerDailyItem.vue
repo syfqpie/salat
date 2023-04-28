@@ -1,10 +1,10 @@
 <template lang="pug">
 div
-	div(class="grid grid-rows-7 grid-flow-col gap-4")
+	div(class="grid grid-cols-7 bg-green-300 shadow-lg rounded-lg")
 		template(v-for="item in prayerTime")
-			div(class="p-4 border-dashed border-green-300 border rounded-lg text-center")
-				img(:src="require(`@/assets/${item.iconSrc}`)" class="h-10 mb-1 mx-auto")
-				p(class="mb-0 text-xs") {{ item.name }}
+			div(class="p-3 w-auto text-center")
+				img(:src="require(`@/assets/${item.iconSrc}`)" class="h-16 mb-1 mx-auto")
+				p(class="mb-0 text-xs font-semibold") {{ item.name }}
 				p(class="mb-0 text-xs") {{ item.time }}
 </template>
 
