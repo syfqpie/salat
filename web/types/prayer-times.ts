@@ -1,11 +1,9 @@
-export const LOCALE_ARG: Intl.LocalesArgument = []
+export const LOCALE_ARG = []
 export const LOCALE_OPTS: Intl.DateTimeFormatOptions = { hour12: true, hour: 'numeric', minute: 'numeric' }
-export const LOCALE_TIMER_ARG: Intl.LocalesArgument = 'en-US'
+export const LOCALE_TDIGIT_OPTS: Intl.DateTimeFormatOptions = { hour: 'numeric', minute: '2-digit' }
+export const LOCALE_TIMER_ARG = 'en-US'
 export const LOCALE_TIMER_OPTS: Intl.NumberFormatOptions = { minimumIntegerDigits: 2, useGrouping: false }
 
-/**
- * Interface for PrayerDaily component
- */
 export interface PrayerTimeItem {
     /** Prayer time */
     name: string,
@@ -14,6 +12,12 @@ export interface PrayerTimeItem {
     iconSrc: string,
 
     time?: string
+}
+
+export interface NextPrayerItem {
+    name: string,
+    date: Date,
+    time: string
 }
 
 /**
