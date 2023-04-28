@@ -15,7 +15,7 @@ div(class="p-3 rounded-lg mb-4")
 <script lang="ts">
 import { defineComponent } from 'vue'
 
-import type { PrayerTime } from '~/types/prayer-times'
+import { NextPrayerItem, PrayerTime, LOCALE_ARG, LOCALE_TDIGIT_OPTS } from '~/types/prayer-times'
 
 export default defineComponent({
 	name: 'PrayerDailyHeader',
@@ -57,11 +57,15 @@ export default defineComponent({
 				}
 			}
 
+			const nextTime: string = this.todayPrayerTimes && nextName !== '--'
+				? String(checkerDT.toLocaleTimeString(LOCALE_ARG, LOCALE_TDIGIT_OPTS))
+				: '--'
+
 			return {
 				name: nextName,
 				date: checkerDT,
-				time: this.todayPrayerTimes ? checkerDT.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }) : '--'
-			}
+				time: nextTime
+			} as NextPrayerItem
 		}
 	}
 })
