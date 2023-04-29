@@ -1,7 +1,7 @@
 <template lang="pug">
 div(class="mt-auto me-auto")
 	p(class="text-sm") To next prayer
-	p(class="text-4xl mb-0") {{ timeLeft }}
+	p(class="text-lg md:text-4xl mb-0") {{ timeLeft }}
 </template>
 
 <script lang="ts">

@@ -1,22 +1,22 @@
 <template lang="pug">
 div(class="p-3 rounded-lg mb-4 bg-green-300 shadow-lg relative")
-	div(class="grid grid-cols-12")
-		div(class="col-span-6 flex items-end p-1")
+	div(class="grid grid-cols-2 md:grid-cols-12")
+		div(class="col-span-1 md:col-span-6 order-2 md:order-1 flex items-end p-1")
 			div(class="me-auto")
 				p(class="text-sm") Next prayer time
-				p(class="text-4xl font-semibold mb-0") {{ nextPrayer.name }}:
+				p(class="text-lg md:text-4xl font-semibold mb-0") {{ nextPrayer.name }}:
 					span(class="ms-2") {{ nextPrayer.time }}
-		div(class="col-span-4 flex p-1")
+		div(class="col-span-1 md:col-span-4 order-1 md:order-2 flex p-1")
 			PrayerTimer(
 				:next-prayer="nextPrayer.date"
 				@onEndTimer="refreshHeader"
 			)
-		div(class="col-span-2 p-1")
+		div(class="col-span-2 p-1 order-3 hidden md:block")
 			img(src="@/assets/icons/drum-lineal.png" class="h-24")
 	p(class="mb-0")
 		span(
 			class="bg-green-100 text-green-800 text-xs \
-			font-medium mr-0.5 px-2.5 py-0.5 rounded"
+			font-medium mr-0.5 px-2.5 py-0.5 rounded line-clamp-1 md:line-clamp-none md:inline-block"
 		) {{ zoneInfo?.text }}
 		a(
 			class="px-2.5 py-0.5 text-xs font-medium text-center \
