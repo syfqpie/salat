@@ -7,7 +7,7 @@ div(class="overflow-hidden p-6 text-center")
 		)
 		h5(class="mb-1 text-xl font-medium") Welcome to Salat
 		p(class="mb-1")
-			span(class="text-sm") v1.0.0-beta1
+			span(class="text-sm") {{ appVersion }}
 		p(class="text-xs") Data is scrapped from
 			a(
 				href="https://www.e-solat.gov.my/"
@@ -22,6 +22,14 @@ div(class="overflow-hidden p-6 text-center")
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-	name: 'AboutPage'
+	name: 'AboutPage',
+	data () {
+		return {
+			appVersion: String(process.env.appVersion).replaceAll('"', '')
+		}
+	},
+	mounted () {
+		console.log(process.env.appVersion)
+	}
 })
 </script>
