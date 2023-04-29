@@ -3,6 +3,8 @@ export const LOCALE_OPTS: Intl.DateTimeFormatOptions = { hour12: true, hour: 'nu
 export const LOCALE_TDIGIT_OPTS: Intl.DateTimeFormatOptions = { hour: 'numeric', minute: '2-digit' }
 export const LOCALE_TIMER_ARG = 'en-US'
 export const LOCALE_TIMER_OPTS: Intl.NumberFormatOptions = { minimumIntegerDigits: 2, useGrouping: false }
+export const LOCALE_HIJRI_OPTS: Intl.DateTimeFormatOptions = { calendar: 'islamic-civil', year: 'numeric', month: 'long', day: 'numeric' }
+export const LOCALE_NORMAL_OPTS: Intl.DateTimeFormatOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
 
 /**
  * Interface for PrayerDaily component

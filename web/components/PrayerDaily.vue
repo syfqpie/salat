@@ -1,7 +1,10 @@
 <template lang="pug">
 div
-	PrayerDailyHeader(:today-items="todayPrayerTimes" :tomorrow-items="tomorrowPrayerTimes")
-	PrayerDailyItem(:today-items="todayPrayerTimes")
+	PrayerDailyHeader(
+		:today-items="todayPrayerTimes"
+		:tomorrow-items="tomorrowPrayerTimes"
+		:today-dates="todayDates")
+	PrayerDailyItem(:today-items="todayPrayerTimes" :today-dates="todayDates")
 </template>
 
 <script lang="ts">
@@ -17,6 +20,9 @@ export default defineComponent({
 		},
 		tomorrowPrayerTimes (): PrayerTime | null {
 			return this.$store.getters['prayerTimes/tomorrow']
+		},
+		todayDates () {
+			return this.$store.getters['prayerTimes/todayDates']
 		}
 	},
 	mounted () {

@@ -1,6 +1,11 @@
 <template lang="pug">
-div
-	div(class="grid grid-cols-7 bg-green-300 shadow-lg rounded-lg")
+div(class="bg-green-300 shadow-lg rounded-lg p-2")
+	p
+		span(
+			class="bg-green-100 text-green-800 text-xs \
+			font-medium px-2.5 py-0.5 rounded"
+		) {{ todayDates?.normal }} / {{  todayDates?.hijri }}
+	div(class="grid grid-cols-7")
 		template(v-for="item in prayerTime")
 			div(class="p-3 w-auto text-center")
 				img(:src="require(`@/assets/${item.iconSrc}`)" class="h-16 mb-1 mx-auto")
@@ -19,6 +24,10 @@ export default defineComponent({
 		todayItems: {
 			type: Object as () => PrayerTime | null,
 			default: null
+		},
+		todayDates: {
+			type: Object as () => { normal: string | undefined; hijri: string | undefined; } | undefined,
+			default: undefined
 		}
 	},
 	data () {
@@ -41,7 +50,7 @@ export default defineComponent({
 				},
 				{
 					name: 'Dhuhr',
-					iconSrc: 'icons/dzuhur-lineal.png',
+					iconSrc: 'icons/dhuhr-lineal.png',
 					time: '--:--'
 				},
 				{

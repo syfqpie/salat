@@ -1,7 +1,7 @@
 import { ActionTree, GetterTree, MutationTree } from 'vuex'
 
 import { RootState } from '~/store'
-import { PrayerTime, Zone } from '~/types/prayer-times'
+import { PrayerTime, Zone, LOCALE_HIJRI_OPTS, LOCALE_NORMAL_OPTS } from '~/types/prayer-times'
 
 const DEFAULT_ZONE: string = 'WLY01'
 export const state = () => ({
@@ -51,6 +51,26 @@ export const getters: GetterTree<PrayerTimesModuleState, RootState> = {
 		}
 
 		return byState
+	},
+	todayDates: (state) => {
+		if (state.weekly.length > 0) {
+			const today = new Date()
+			const filtered = state.weekly.find(({ date }) => {
+				const prayerTimeDate = new Date(date)
+				return today.toLocaleDateString() === prayerTimeDate.toLocaleDateString()
+			})
+
+			let formatted: Date | undefined
+
+			if (filtered) {
+				formatted = new Date(filtered.date)
+			}
+
+			return {
+				normal: formatted?.toLocaleDateString([], LOCALE_NORMAL_OPTS),
+				hijri: formatted?.toLocaleDateString([], LOCALE_HIJRI_OPTS)
+			}
+		}
 	}
 }
 
