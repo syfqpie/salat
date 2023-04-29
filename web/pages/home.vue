@@ -1,5 +1,5 @@
 <template lang="pug">
-div(class="bg-white overflow-hidden shadow sm:rounded-lg p-6")
+div(class="overflow-hidden p-6")
 	PrayerDaily
 </template>
 
