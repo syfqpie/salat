@@ -1,5 +1,5 @@
 <template lang="pug">
-div(class="p-3 rounded-lg mb-4 bg-green-300 shadow-lg")
+div(class="p-3 rounded-lg mb-4 bg-green-300 shadow-lg relative")
 	div(class="grid grid-cols-12")
 		div(class="col-span-6 flex items-end p-1")
 			div(class="me-auto")
@@ -10,12 +10,29 @@ div(class="p-3 rounded-lg mb-4 bg-green-300 shadow-lg")
 			PrayerTimer(:next-prayer="nextPrayer.date")
 		div(class="col-span-2 p-1")
 			img(src="@/assets/icons/drum-lineal.png" class="h-24")
+	p(class="mb-0")
+		span(
+			class="bg-green-100 text-green-800 text-xs \
+			font-medium mr-0.5 px-2.5 py-0.5 rounded"
+		) {{ zoneInfo?.text }}
+		a(
+			class="px-2.5 py-0.5 text-xs font-medium text-center \
+			bg-gray-100 text-gray-800 rounded hover:bg-green-400 \
+			focus:shadow cursor-pointer"
+			@click="toggleChooseZone"
+		) Change
+	PrayerZoneSelect(
+		:zone-opts="zoneByState"
+		:zones="zones"
+		:current-zone="zoneInfo"
+		@onCancel="toggleChooseZone()"
+		v-if="isChooseZone")
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 
-import { NextPrayerItem, PrayerTime, LOCALE_ARG, LOCALE_TDIGIT_OPTS } from '~/types/prayer-times'
+import { NextPrayerItem, PrayerTime, Zone, LOCALE_ARG, LOCALE_TDIGIT_OPTS } from '~/types/prayer-times'
 
 export default defineComponent({
 	name: 'PrayerDailyHeader',
@@ -27,6 +44,11 @@ export default defineComponent({
 		tomorrowItems: {
 			type: Object as () => PrayerTime | null,
 			default: null
+		}
+	},
+	data () {
+		return {
+			isChooseZone: false as boolean
 		}
 	},
 	computed: {
@@ -75,6 +97,20 @@ export default defineComponent({
 				date: checkerDT,
 				time: nextTime
 			} as NextPrayerItem
+		},
+		zoneInfo (): Zone | null {
+			return this.$store.state.prayerTimes.savedZone
+		},
+		zones (): Zone[] {
+			return this.$store.state.prayerTimes.zones as Zone[]
+		},
+		zoneByState (): { [key: string]: any } {
+			return this.$store.getters['prayerTimes/zoneByState']
+		}
+	},
+	methods: {
+		toggleChooseZone () {
+			this.isChooseZone = !this.isChooseZone
 		}
 	}
 })

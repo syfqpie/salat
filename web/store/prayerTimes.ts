@@ -60,21 +60,46 @@ export const mutations: MutationTree<PrayerTimesModuleState> = {
 }
 
 export const actions: ActionTree<PrayerTimesModuleState, RootState> = {
-	async getData ({ commit }) {
+	async getData ({ dispatch }) {
+		await dispatch('getZones')
+		await dispatch('getPrayerTimes')
+	},
+	async getPrayerTimes ({ commit, dispatch }) {
+		const defaultZone = await dispatch('getDefaultZone') ?? 'SGR01'
+
 		try {
-			const prayerTimes = await this.$axios.$get('api/v1/prayer-times/?zone=SGR01&weekly=True')
+			const prayerTimes = await this.$axios.$get(`api/v1/prayer-times/?zone=${defaultZone}&weekly=True`)
 			commit('UPDATE_DATA', prayerTimes)
 		} catch (e) {
 			// placeholder for error handling
 		}
-
+	},
+	async getZones ({ commit, dispatch }) {
 		try {
 			const zones = await this.$axios.$get('api/v1/zones/')
-			const defaultZone = zones.find((zone: Zone) => zone.code === 'SGR01')
+			const defaultZoneStr = await dispatch('getDefaultZone') ?? 'SGR01'
+			const defaultZone = zones.find((zone: Zone) => zone.code === defaultZoneStr)
 			commit('UPDATE_ZONE', zones)
 			commit('UPDATE_DEFAULT_ZONE', defaultZone)
 		} catch (e) {
 			// placeholder for error handling
 		}
+	},
+	async updateZone ({ commit, dispatch }, zone: Zone) {
+		await dispatch('storeDefaultZone', zone.code)
+		await dispatch('getPrayerTimes')
+		commit('UPDATE_DEFAULT_ZONE', zone)
+	},
+	storeDefaultZone (_ctx, zoneStr: string) {
+		if (process.client) {
+			localStorage.setItem('defaultZone', zoneStr)
+		}
+	},
+	getDefaultZone (_ctx) {
+		if (process.client) {
+			return localStorage.getItem('defaultZone')
+		}
+
+		return null
 	}
 }
