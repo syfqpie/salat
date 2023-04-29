@@ -3,6 +3,7 @@ import { ActionTree, GetterTree, MutationTree } from 'vuex'
 import { RootState } from '~/store'
 import { PrayerTime, Zone } from '~/types/prayer-times'
 
+const DEFAULT_ZONE: string = 'WLY01'
 export const state = () => ({
 	weekly: [] as PrayerTime[],
 	zones: [] as Zone[],
@@ -65,7 +66,7 @@ export const actions: ActionTree<PrayerTimesModuleState, RootState> = {
 		await dispatch('getPrayerTimes')
 	},
 	async getPrayerTimes ({ commit, dispatch }) {
-		const defaultZone = await dispatch('getDefaultZone') ?? 'SGR01'
+		const defaultZone = await dispatch('getDefaultZone') ?? DEFAULT_ZONE
 
 		try {
 			const prayerTimes = await this.$axios.$get(`api/v1/prayer-times/?zone=${defaultZone}&weekly=True`)
@@ -77,7 +78,7 @@ export const actions: ActionTree<PrayerTimesModuleState, RootState> = {
 	async getZones ({ commit, dispatch }) {
 		try {
 			const zones = await this.$axios.$get('api/v1/zones/')
-			const defaultZoneStr = await dispatch('getDefaultZone') ?? 'SGR01'
+			const defaultZoneStr = await dispatch('getDefaultZone') ?? DEFAULT_ZONE
 			const defaultZone = zones.find((zone: Zone) => zone.code === defaultZoneStr)
 			commit('UPDATE_ZONE', zones)
 			commit('UPDATE_DEFAULT_ZONE', defaultZone)
