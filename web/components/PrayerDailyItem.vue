@@ -5,12 +5,14 @@ div(class="bg-green-300 shadow-lg rounded-lg p-2")
 			class="bg-green-100 text-green-800 text-xs \
 			font-medium px-2.5 py-0.5 rounded"
 		) {{ todayDates?.normal }} / {{  todayDates?.hijri }}
-	div(class="grid grid-cols-7")
+	div(class="grid grid-cols-1 md:grid-cols-7 mt-2 md:mt-0")
 		template(v-for="item in prayerTime")
-			div(class="p-3 w-auto text-center")
-				img(:src="require(`@/assets/${item.iconSrc}`)" class="h-16 mb-1 mx-auto")
-				p(class="mb-0 text-xs font-semibold") {{ item.name }}
-				p(class="mb-0 text-xs") {{ item.time }}
+			div(class="p-3 w-full md:w-auto text-center flex md:block")
+				img(
+					:src="require(`@/assets/${item.iconSrc}`)"
+					class="h-10 md:h-16 mb-1 md:mx-auto")
+				p(class="my-auto md:mt-0 md:mb-0 text-base md:text-xs font-semibold") {{ item.name }}
+				p(class="ms-auto my-auto md:ms-0 md:mt-0 md:mb-0 text-lg md:text-xs font-semibold md:font-normal") {{ item.time }}
 </template>
 
 <script lang="ts">
