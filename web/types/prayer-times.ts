@@ -86,3 +86,32 @@ export interface PrayerTime {
     /** Isha time */
     isha: string;
 }
+
+/**
+ * Base interface for zones
+ * @member {number} id Zone database ID (eg: 1)
+ * @member {string} code Zone code (eg: JHR01)
+ * @member {string} text Prayer time hijri date (eg: JHR02 - Johor Bahru, Kota Tinggi, Mersing, Kulai)
+ * @member {string} state Prayer time normal date (eg: Johor)
+ * @member {string} created_at Imsak time (eg: 2023-04-25T14:34:34.328964)
+ * @member {string} updated_at Fajr time (eg: 2023-04-25T14:34:34.328964)
+ */
+export interface Zone {
+    /** Zone database ID */
+    id: number;
+
+    /** Zone code */
+    code: string;
+
+    /** Zone text */
+    text: string;
+
+    /** Zone state */
+    state: string;
+
+    /** Entry created_at */
+    created_at: string;
+
+    /** Entry updated at  */
+    updated_at: string | null;
+}
