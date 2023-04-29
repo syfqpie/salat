@@ -52,14 +52,14 @@ export default defineComponent({
 	data () {
 		return {
 			isChooseZone: false as boolean,
-			checkerDT: new Date()
+			checkerDT: new Date() as Date
 		}
 	},
 	computed: {
 		nextPrayer () {
 			let nextName = '--'
-			const currentDT = new Date()
-			const checkerDT = new Date(this.checkerDT)
+			const currentDT: Date = new Date()
+			const checkerDT: Date = new Date(this.checkerDT.getTime())
 			const isNext = (strTime: string) => {
 				checkerDT.setHours(Number(strTime.slice(0, 2)))
 				checkerDT.setMinutes(Number(strTime.slice(3, 5)))
