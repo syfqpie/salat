@@ -1,7 +1,7 @@
 <template lang="pug">
-a(class='flex justify-center pt-8 pb-2 sm:pt-0' href='https://nuxtjs.org' target='_blank')
+a(class='flex justify-center pt-8 pb-2 sm:pt-0' href='/' target='_blank')
     h1(
-        class="mb-0 text-4xl font-bold leading-none tracking-tight\
+        class="my-auto text-4xl font-bold leading-none tracking-tight\
         md:text-5xl lg:text-3xl"
     ) Salat
     //- svg(width='218' height='45' viewbox='0 0 159 30' fill='none' xmlns='http://www.w3.org/2000/svg')
