@@ -1,8 +1,36 @@
 <template lang="pug">
 div(class='flex justify-center pt-4 space-x-2')
+	a(href="/home")
+		svg(
+			class='w-6 h-6 text-gray-600 hover:text-green-300'
+			aria-hidden='true'
+			fill='none'
+			stroke='currentColor'
+			stroke-width='1.5'
+			viewbox='0 0 24 24'
+			xmlns='http://www.w3.org/2000/svg')
+			path(
+				d='M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25'
+				stroke-linecap='round'
+				stroke-linejoin='round')
+
+	a(href='/about')
+		svg(
+			class='w-6 h-6 text-gray-600 hover:text-green-300'
+			aria-hidden='true'
+			fill='none'
+			stroke='currentColor'
+			stroke-width='1.5'
+			viewbox='0 0 24 24'
+			xmlns='http://www.w3.org/2000/svg')
+			path(
+				d='M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z'
+				stroke-linecap='round'
+				stroke-linejoin='round')
+
 	a(href='https://github.com/syfqpie/salat' target='_blank')
 		svg(
-			class='w-6 h-6 text-gray-600 button--github hover:text-gray-800'
+			class='w-6 h-6 text-gray-600 hover:text-green-300'
 			xmlns='http://www.w3.org/2000/svg'
 			xmlns:xlink='http://www.w3.org/1999/xlink'
 			aria-hidden='true'
