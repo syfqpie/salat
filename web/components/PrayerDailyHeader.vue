@@ -4,7 +4,7 @@ div(class="p-3 rounded-lg mb-4 bg-green-300 shadow-lg relative")
 		div(class="col-span-1 md:col-span-6 order-2 md:order-1 flex items-end p-1")
 			div(class="me-auto")
 				p(class="text-sm") Next prayer time
-				p(class="text-lg md:text-4xl font-semibold mb-0") {{ nextPrayer.name }}:
+				p(class="text-base md:text-4xl font-semibold mb-0") {{ nextPrayer.name }}:
 					span(class="ms-2") {{ nextPrayer.time }}
 		div(class="col-span-1 md:col-span-4 order-1 md:order-2 flex p-1")
 			PrayerTimer(
