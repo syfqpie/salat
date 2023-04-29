@@ -15,7 +15,7 @@ div(class="overflow-hidden p-6 text-center")
 		p(class="text-xs") Icons are from
 			a(
 				href="https://www.flaticon.com/packs/muslim"
-				class="ms-1 font-medium hover:text-green-300 text-gray-700 hover:underline") flaticon
+				class="ms-1 font-semibold hover:text-green-300 text-gray-700 hover:underline") flaticon
 </template>
 
 <script lang="ts">
