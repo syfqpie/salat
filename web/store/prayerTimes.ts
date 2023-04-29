@@ -48,7 +48,6 @@ export const getters: GetterTree<PrayerTimesModuleState, RootState> = {
 				byState[zone.state].push(zone)
 			}
 		}
-		console.log(byState)
 
 		return byState
 	}
