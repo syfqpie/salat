@@ -17,6 +17,9 @@ export default defineComponent({
 			default: null
 		}
 	},
+	emits: [
+		'onEndTimer'
+	],
 	data () {
 		return {
 			timeDistance: null as number | null
@@ -69,6 +72,7 @@ export default defineComponent({
 
 				if (currentDistance === 0 || currentDistance < 0) {
 					this.timeDistance = 0
+					this.$emit('onEndTimer')
 					clearInterval(currentInterval)
 				} else {
 					this.timeDistance = (Math.round(targetMs - currentMs))

@@ -7,7 +7,10 @@ div(class="p-3 rounded-lg mb-4 bg-green-300 shadow-lg relative")
 				p(class="text-4xl font-semibold mb-0") {{ nextPrayer.name }}:
 					span(class="ms-2") {{ nextPrayer.time }}
 		div(class="col-span-4 flex p-1")
-			PrayerTimer(:next-prayer="nextPrayer.date")
+			PrayerTimer(
+				:next-prayer="nextPrayer.date"
+				@onEndTimer="refreshHeader"
+			)
 		div(class="col-span-2 p-1")
 			img(src="@/assets/icons/drum-lineal.png" class="h-24")
 	p(class="mb-0")
@@ -48,14 +51,15 @@ export default defineComponent({
 	},
 	data () {
 		return {
-			isChooseZone: false as boolean
+			isChooseZone: false as boolean,
+			checkerDT: new Date()
 		}
 	},
 	computed: {
 		nextPrayer () {
 			let nextName = '--'
 			const currentDT = new Date()
-			const checkerDT = new Date()
+			const checkerDT = new Date(this.checkerDT)
 			const isNext = (strTime: string) => {
 				checkerDT.setHours(Number(strTime.slice(0, 2)))
 				checkerDT.setMinutes(Number(strTime.slice(3, 5)))
@@ -111,6 +115,9 @@ export default defineComponent({
 	methods: {
 		toggleChooseZone () {
 			this.isChooseZone = !this.isChooseZone
+		},
+		refreshHeader () {
+			this.checkerDT = new Date()
 		}
 	}
 })
