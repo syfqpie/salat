@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# install deps
+pipenv install
+
+# init db
+./init_db &
+
+# Get its PID
+PID=$!
+# wait for 2 seconds and kill it
+sleep 2
+kill $PID
+
+# run scrapper script
+pipenv run python ./scripts/scrapper.py
