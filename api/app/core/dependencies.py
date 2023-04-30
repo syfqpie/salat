@@ -11,4 +11,4 @@ def get_db():
 
 
 def run_sync_script():
-    return os.system("pipenv run python ./scripts/scrapper.py ")
+    return os.system("pipenv install; pipenv run python -m ./scripts/scrapper.py")
