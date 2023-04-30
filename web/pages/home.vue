@@ -1,5 +1,5 @@
 <template lang="pug">
-div(class="overflow-hidden p-6")
+div(class="p-6 pt-4 w-screen md:w-fit")
 	PrayerDaily
 </template>
 
