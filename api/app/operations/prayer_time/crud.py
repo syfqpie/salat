@@ -5,6 +5,7 @@ from fastapi import BackgroundTasks, responses, status
 from sqlalchemy import extract
 from sqlalchemy.orm import Session
 
+from app.core.dependencies import run_sync_script
 from app.operations.prayer_time import models
 
 
@@ -59,7 +60,3 @@ def sync_monthly(db: Session, background_tasks: BackgroundTasks):
     return responses.JSONResponse(
         content={"status": "Already synced"}, status_code=status.HTTP_200_OK
     )
-
-
-def run_sync_script():
-    return os.system("pipenv run python ./scripts/scrapper.py ")
