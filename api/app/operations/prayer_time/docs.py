@@ -94,3 +94,19 @@ PRAYER_TIMES_EXTRA = {
         },
     },
 }
+
+SYNC_DESCRIPTION = "Sync monthly data in background if no current month data"
+SYNC_EXTRA = {
+    "description": SYNC_DESCRIPTION,
+    "summary": "Sync monthly data",
+    "responses": {
+        status.HTTP_200_OK: {
+            "description": "Ok",
+            "content": {"application/json": {"example": {"status": "Already synced"}}},
+        },
+        status.HTTP_202_ACCEPTED: {
+            "description": "Accepted",
+            "content": {"application/json": {"example": {"status": "Syncing"}}},
+        },
+    },
+}
