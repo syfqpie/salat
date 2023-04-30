@@ -27,9 +27,6 @@ export default defineComponent({
 		return {
 			appVersion: String(process.env.appVersion).replaceAll('"', '')
 		}
-	},
-	mounted () {
-		console.log(process.env.appVersion)
 	}
 })
 </script>
