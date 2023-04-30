@@ -3,9 +3,10 @@ from functools import lru_cache
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
-from app.v1.api import api_router
+from app.core.dependencies import run_sync_script
 from app.core.settings import settings
 from app.core.database import Base, engine
+from app.v1.api import api_router
 from app.v1.tags import tags_metadata
 
 
@@ -39,3 +40,11 @@ if get_settings().BACKEND_CORS_ORIGINS:
 
 # Router
 app.include_router(api_router, prefix=get_settings().API_V1_STR)
+
+
+@app.on_event("startup")
+async def startup_event():
+    if get_settings().DEBUG:
+        return
+
+    return run_sync_script()

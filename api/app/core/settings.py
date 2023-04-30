@@ -13,6 +13,7 @@ class Settings(BaseSettings):
     DESCRIPTION = """
     Salat API helps you get your Malaysian local area prayer times 🕌
     """
+    DEBUG: bool = config("DEBUG", False)
 
     class Config:
         case_sensitive = True
