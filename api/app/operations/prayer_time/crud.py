@@ -1,8 +1,11 @@
+import os
 import datetime
 
+from fastapi import BackgroundTasks, responses, status
 from sqlalchemy import extract
 from sqlalchemy.orm import Session
 
+from app.core.dependencies import run_sync_script
 from app.operations.prayer_time import models
 
 
@@ -32,3 +35,28 @@ def get_prayer_times_by_zone(db: Session, zone_code: str, weekly: bool = False):
         q_filters.append(extract("month", models.PrayerTime.date) == current_month)
 
     return db.query(models.PrayerTime).filter(*q_filters).all()
+
+
+def sync_monthly(db: Session, background_tasks: BackgroundTasks):
+    """Query first entry of this month data, if no data found, sync latest monthly"""
+    current_month = datetime.datetime.now().month
+    current_year = datetime.datetime.now().year
+    month_entry = (
+        db.query(models.PrayerTime)
+        .filter(
+            extract("year", models.PrayerTime.date) == current_year,
+            extract("month", models.PrayerTime.date) == current_month,
+        )
+        .first()
+    )
+
+    if not month_entry:
+        background_tasks.add_task(run_sync_script)
+
+        return responses.JSONResponse(
+            content={"status": "Syncing"}, status_code=status.HTTP_202_ACCEPTED
+        )
+
+    return responses.JSONResponse(
+        content={"status": "Already synced"}, status_code=status.HTTP_200_OK
+    )

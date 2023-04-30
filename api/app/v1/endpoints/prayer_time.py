@@ -1,5 +1,5 @@
 from typing import Annotated
-from fastapi import APIRouter, Depends, HTTPException, status, Query
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, status, Query
 
 from sqlalchemy.orm import Session
 
@@ -38,3 +38,10 @@ def read_prayer_times(
         )
 
     return crud.get_prayer_times_by_zone(db, zone, weekly)
+
+
+@router.get(
+    "/sync-monthly", response_model=schemas.SyncBase, openapi_extra=docs.SYNC_EXTRA
+)
+def sync_monthly(background_tasks: BackgroundTasks, db: Session = Depends(get_db)):
+    return crud.sync_monthly(db, background_tasks)

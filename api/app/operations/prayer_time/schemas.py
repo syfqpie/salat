@@ -45,3 +45,7 @@ class PrayerTime(PrayerTimeBase):
 
     class Config:
         orm_mode = True
+
+
+class SyncBase(BaseModel):
+    status: str
