@@ -3,7 +3,6 @@ from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, status, 
 
 from sqlalchemy.orm import Session
 
-from app import main
 from app.core.dependencies import get_db
 from app.operations.prayer_time import crud, schemas, docs
 
@@ -46,4 +45,3 @@ def read_prayer_times(
 )
 def sync_monthly(background_tasks: BackgroundTasks, db: Session = Depends(get_db)):
     return crud.sync_monthly(db, background_tasks)
-
