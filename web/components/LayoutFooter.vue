@@ -1,5 +1,5 @@
 <template lang="pug">
-div(class='flex justify-center pt-4 space-x-2')
+div(class='flex justify-center pb-4 space-x-2')
 	a(href="/home")
 		svg(
 			class='w-6 h-6 text-gray-600 hover:text-green-300'

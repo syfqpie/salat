@@ -1,5 +1,5 @@
 <template lang="pug">
-div(class="p-6 w-screen md:w-fit")
+div(class="p-6 pt-4 w-screen md:w-fit")
 	PrayerDaily
 </template>
 
