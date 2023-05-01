@@ -5,7 +5,7 @@ div(class="overflow-hidden p-6 text-center")
 			class="h-24 w-auto mx-auto"
 			src="~/assets/icons/lab.png"
 		)
-		h5(class="mb-1 text-xl font-medium") Welcome to Salat
+		h5(class="mb-1 text-xl font-medium") {{ $t('aboutWelcome') }} Salat
 		p(class="mb-1")
 			span(class="text-sm") {{ appVersion }}
 		p(class="text-xs") Data is scrapped from
