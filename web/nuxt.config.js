@@ -43,7 +43,10 @@ export default {
 	// Modules: https://go.nuxtjs.dev/config-modules
 	modules: [
 		// https://go.nuxtjs.dev/axios
-		'@nuxtjs/axios'
+		'@nuxtjs/axios',
+
+		// https://i18n.nuxtjs.org/setup
+		'@nuxtjs/i18n'
 	],
 
 	// Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -51,6 +54,23 @@ export default {
 		// Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
 		baseURL: process.env.API_BASE_URL || 'http://localhost:8000',
 		progress: true
+	},
+
+	i18n: {
+		locales: [
+			{
+				code: 'en',
+				file: 'en-GB.ts'
+			},
+			{
+				code: 'ms',
+				file: 'ms-MY.ts'
+			}
+		],
+		lazy: true,
+		langDir: 'lang/',
+		defaultLocale: 'en',
+		strategy: 'prefix_except_default'
 	},
 
 	// Build Configuration: https://go.nuxtjs.dev/config-build
